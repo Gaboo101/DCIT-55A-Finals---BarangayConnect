@@ -264,6 +264,13 @@ $requests = getAllRequests($conn, $filter_status);
             <p><strong>Applicant:</strong> <?php echo htmlspecialchars($req['first_name'] . ' ' . $req['last_name']); ?></p>
             <p><strong>Document:</strong> <?php echo htmlspecialchars($req['doc_name']); ?></p>
             <p><strong>Current Status:</strong> <span style="font-weight: 600;"><?php echo htmlspecialchars($req['status']); ?></span></p>
+            <p><strong>Request Date:</strong> <?php echo htmlspecialchars($req['request_date']); ?></p>
+            <p><strong>Attached ID/Photo:</strong> 
+              <?php if ($req['id_photo_path']): ?>
+                <a href="<?php echo htmlspecialchars($req['id_photo_path']); ?>" target="_blank" class="btn btn-secondary btn-size-sm">View Attachment</a>
+              <?php else: ?>
+                <span style="color: var(--text-muted);">No attachment provided</span>
+              <?php endif; ?>
           </div>
 
           <form method="POST" action="requests-admin.php">
