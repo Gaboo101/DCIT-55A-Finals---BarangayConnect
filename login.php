@@ -2,6 +2,11 @@
 session_start();
 require_once 'database/database.php';
 
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] !== '') {
+    header("Location: index.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = connectDB();
     if (!$conn) {

@@ -48,9 +48,12 @@ if (isUserLoggedIn()) {
       </a>
       <nav class="main-nav">
         <a href="index.php" class="nav-link">Home</a>
-        <a href="request.php" class="nav-link">Request Document</a>
-        <a href="track.php" class="nav-link active">Track Request</a>
-        <?php if(isUserLoggedIn()): ?>
+        <?php if(isAdminLoggedIn()): ?>
+          <a href="admin.php" class="nav-link" style="color: #fff; background-color: var(--primary-light); border-color: #007bff;">Admin Dashboard</a>
+          <a href="logout.php" class="nav-link btn-admin">Logout</a>
+        <?php elseif(isUserLoggedIn()): ?>
+          <a href="request.php" class="nav-link">Request Document</a>
+          <a href="track.php" class="nav-link active">Track Request</a>
           <a href="index.php" class="nav-link">Hello, <?php echo htmlspecialchars($_SESSION['first_name']); ?></a>
           <a href="logout.php" class="nav-link btn-admin">Logout</a>
         <?php else: ?>
